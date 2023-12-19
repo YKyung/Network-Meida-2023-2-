@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🩵About Disney🤍</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+    <script src='https://code.jquery.com/jquery-3.7.1.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        
+        body, html {
+            height: 105%;
+            margin: 0;
+
+            padding: 0;
+            font-family: 'Baloo 2', cursive;
+        }
+        .modal {
+            display: none;
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%;
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+        }
+        
+        /* 모달 내용 스타일 */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .bg {
+            background-image: url('made(2).png');
+            height: 115%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .about {
+            font-size: 2.5em;
+            font-weight:bold;
+            color: #faffe6;
+            display: inline;
+            animation: revealText 3s forwards;
+        }
+
+        .disney {
+            font-size: 3em;
+            font-weight: bold;
+            color: white;
+            display: inline;
+            opacity: 0;
+            animation: fadeInText 3s forwards 3s;
+        }
+
+        @keyframes revealText {
+            0% {
+                clip-path: inset(0 100% 0 0);
+            }
+            100% {
+                clip-path: inset(0 0 0 0);
+            }
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        .sidebar {
+            height: 50%;
+            width: 150px; 
+            position: fixed; 
+            z-index: 1; 
+            top: 100px; 
+            left: 20px; 
+            background-color: rgba(255, 255, 255, 0.5); 
+            overflow-x: hidden; 
+            padding-top: 100px; 
+        }
+
+        
+        .sidebar a {
+            padding: 6px 8px 6px 16px; 
+            text-decoration: none; 
+            font-size: 25px; 
+            color: white; 
+            display: block; 
+        }
+
+        .sidebar a:hover {
+            color: #b870ff;
+        }
+
+
+        @media screen and (max-width: 700px) {
+            .sidebar {
+                width: 100%; 
+                height: auto; 
+                position: relative; 
+            }
+            .main-content {
+                margin-left: 0; 
+            }
+        }
+        .boat1 {
+            position: absolute;
+            bottom:-200px;
+            left: 400px;
+            width: 85px; 
+            height: auto; 
+            opacity:0.4;
+            cursor: pointer;
+        }
+        .boat2 {
+            position: absolute;
+            bottom:-160px;
+            left: 550px;
+            width: 85px; 
+            height: auto; 
+            opacity:0.4;
+            cursor: pointer;
+        }
+        .boat3 {
+            position: absolute;
+            bottom:-180px;
+            left: 700px;
+            width: 85px; 
+            height: auto; 
+            opacity:0.4;
+            cursor: pointer;
+        }
+        .boat4 {
+            position: absolute;
+            bottom:-200px;
+            left: 900px;
+            width: 85px; 
+            height: auto; 
+            opacity:0.4;
+            cursor: pointer;
+        }
+        .boat5 {
+            position: absolute;
+            bottom:-150px;
+            left: 1000px;
+            width: 85px; 
+            height: auto; 
+            opacity:0.4;
+            cursor: pointer;
+        }
+        .boat6 {
+            position: absolute;
+            bottom:-180px;
+            left: 1250px;
+            width: 85px; 
+            height: auto; 
+            opacity:0.4;
+            cursor: pointer;
+        }
+        .balloon1 {
+            width: 400px;
+            height:500px;
+            padding: 15px;
+            position: fixed;
+            left: 490px; 
+            bottom: 10px;
+            background-color: white;
+            border-radius: 50px;
+            display: none; 
+            border: 10px solid pink; 
+            
+        }
+        .balloon2 {
+            width: 400px;
+            height:500px;
+            padding: 15px;
+            position: fixed;
+            left: 640px; 
+            bottom: 60px;
+            background-color: white;
+            border-radius: 50px;
+            display: none; 
+            border: 10px solid pink; 
+            
+        }
+        .balloon3 {
+            width: 400px;
+            height:500px;
+            padding: 15px;
+            position: fixed;
+            left: 790px; 
+            bottom: 60px;
+            background-color: white;
+            border-radius: 50px;
+            display: none; 
+            border: 10px solid pink;
+            
+        }
+        .balloon4 {
+            width: 400px;
+            height:500px;
+            padding: 15px;
+            position: fixed;
+            left: 990px; 
+            bottom: 30px;
+            background-color: white;
+            border-radius: 50px;
+            display: none; 
+            border: 10px solid pink; 
+            
+        }
+        .balloon5 {
+            width: 400px;
+            height:500px;
+            padding: 15px;
+            position: fixed;
+            left: 530px; 
+            bottom: 90px;
+            background-color: white;
+            border-radius: 50px;
+            display: none; 
+            border: 10px solid pink; 
+            
+        }
+        .balloon6 {
+            width: 400px;
+            height:500px;
+            padding: 15px;
+            position: fixed;
+            left: 800px; 
+            bottom: 30px;
+            background-color: white;
+            border-radius: 50px;
+            display: none;
+            border: 10px solid pink; 
+            
+        }
+
+        .balloon::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 300px; 
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent transparent transparent white;
+        }
+        .balloon-image {
+            width: 50px; 
+            height: auto; 
+        }
+        .balloon-pic{
+            width:100%;
+            height:60%;
+        }
+        .balloon-text {
+            font-size:1.5em;
+            font-weight:bold;
+            margin-top: 0; 
+        }
+        .balloon-content{
+            font-size:1em;
+            line-height:0.7em;
+            margin-top:5px;
+        }
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: red;
+            pointer-events: none;
+        }
+        .custom-cursor {
+            cursor: url('mouse.png'), auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="myModal" class="modal">
+        
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>페이지에 오신 것을 환영합니다!</p>
+        </div>
+    </div>
+    <div class="bg"></div>
+    <div class="container">
+        <span class="about">🩵About</span><span class="disney"> Disney🤍</span>
+    </div>
+    <div class="sidebar">
+        <a href="Tokyo.html">Tokyo</a>
+        <a href="America.html">America</a>
+        <a href="Hongkong.html">Honkong</a>
+        <a href="Shanghai.html">Shanghai</a>
+        <a href="Paris.html">Paris</a>
+        <a href="princess.html" id="princessLink">Princess</a>
+    </div>
+    <img src="boat(1).png"  class="boat1" id="image">
+    <img src="boat(1).png"  class="boat2" id="image1">
+    <img src="boat(1).png"  class="boat3" id="image2">
+    <img src="boat(1).png"  class="boat4" id="image3">
+    <img src="boat(1).png"  class="boat5" id="image4">
+    <img src="boat(1).png"  class="boat6" id="image5">
+    <div id="balloon" class="balloon1">
+        <img src="USA.png"  class="balloon-image">
+        <p class="balloon-text">Disney land Resort</p>
+        <img src="California.png"  class="balloon-pic">
+        <p class="balloon-content">America 92802 California, Anaheim</p>
+        <a href="https://disneyparks.disney.go.com/kr/disneyland">Disney land resort website</a>
+    </div>
+    <div id="balloon1" class="balloon2">
+        <img src="USA.png"  class="balloon-image">
+        <p class="balloon-text">Walt Disney World Resort</p>
+        <img src="Florida.png"  class="balloon-pic">
+        <p class="balloon-content">Lake Buena Vista Orange County, FL, America</p>
+        <a href="https://disneyparks.disney.go.com/kr/disneyworld/">Walt Disney World Resort</a>
+    </div>
+    <div id="balloon2" class="balloon3">
+        <img src="Honkong.png"  class="balloon-image">
+        <p class="balloon-text">Hongkong Disney land</p>
+        <img src="Hongkong.png"  class="balloon-pic">
+        <p class="balloon-content">Lantau Island, HongKong</p>
+        <a href="https://www.hongkongdisneyland.com/ko/">Hongkong Disney land</a>
+    </div>
+    <div id="balloon3" class="balloon4">
+        <img src="China.png"  class="balloon-image">
+        <p class="balloon-text">Shanghai Disney land</p>
+        <img src="Shanghai.png"  class="balloon-pic">
+        <p class="balloon-content">4MV5+945, Pudong, Shanghai,China</p>
+        <a href="https://www.shanghaidisneyresort.com/en/">Shanghai Disney land</a>
+    </div>
+    <div id="balloon4" class="balloon5">
+        <img src="France.png"  class="balloon-image">
+        <p class="balloon-text">Disney land Paris</p>
+        <img src="Paris.png"  class="balloon-pic">
+        <p class="balloon-content">Bd de Parc, 77700 Coupvray,Paris</p>
+        <a href="https://www.disneylandparis.com/fr-fr/?ecid=AFF_TD_S_3312128-19240&epi&epi2&1&gclid=Cj0KCQiAj_CrBhD-ARIsAIiMxT_r1d7XqCN3AgatzrgP5NI-0J3wwH0v37sMfEEgZJoZlYvS7sKBE9gaArh5EALw_wcB">Disney land Paris</a>
+    </div>
+    <div id="balloon5" class="balloon6">
+        <img src="Japan.png"  class="balloon-image" id="tokyoImage">
+        <p class="balloon-text">Tokyo Disney Resort</p>
+        <img src="Tokyo.png"  class="balloon-pic">
+        <p class="balloon-content"> 1-1 Maihama, Urayasu, Chiba 279-0031,Japan</p>
+        <a href="https://www.tokyodisneyresort.jp/kr/tdl/">Tokyo Disney Resort</a>
+    </div>
+    <div id="imageContainer" style="position: relative;">
+        <img src="도쿄지도.jpg" alt="도쿄 지도" id="tokyoMap" style="width: 100%; height: auto; display: none;">
+    </div>
+    
+</body>
+</html>
